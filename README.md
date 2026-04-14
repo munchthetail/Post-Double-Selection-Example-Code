@@ -5,4 +5,4 @@ Still under construction...
 
 Datasets collected from Rdatasets.
 
-Arel-Bundock, Vincent. Rdatasets: A Collection of Datasets Originally Distributed in Various R Packages. GitHub repository. 2025.
+Arel-Bundock, Vincent. Rdatasets: A Collection of Datasets Originally Distributed in Various R Packages. GitHub repository. 2025. https://github.com/vincentarelbundock/Rdatasets
