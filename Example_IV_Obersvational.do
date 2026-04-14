@@ -56,16 +56,24 @@
 	pdslasso bwt smoke (`controls'), robust
 	estimates store pds_lasso
 	
+	//had to make this complicated to print nicely...
 	esttab ols ols_controls pds_lasso using Example_IV_Observational.tex, ///
 		mtitles("OLS" "OLS+Controls" "PDS-Lasso") ///
 		keep(smoke) ///
-		nonumbers ///
+		order(smoke) ///
+		noobs nonumbers ///
 		b(4) se(4) ///
 		star(* 0.10 ** 0.05 *** 0.01) ///
-		label nobaselevels ///
-		booktabs ///
+		booktabs compress ///
+		label nobaselevels noomitted ///
+		nonotes ///
+		addnotes("Standard errors in parentheses" ///
+				 "\$^{*}p<0.10\$, \$^{**}p<0.05\$, \$^{***}p<0.01\$") ///
+		substitute("\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}" "" ///
+				   "\sym{***}" "$^{***}$" ///
+				   "\sym{**}" "$^{**}$" ///
+				   "\sym{*}" "$^{*}$") ///
 		replace
-
 //Lasso with cross-validation... there is no pds with built-in cross validation so we do it manually
 
 	//this lasso function uses the cross-validation for the tuning parameter

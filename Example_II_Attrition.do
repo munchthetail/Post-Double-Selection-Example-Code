@@ -75,16 +75,25 @@
 	pdslasso ln_doc_vis zero_copay (`controls' site year), partial(site year) robust cluster(zper)
 	estimates store pds_lasso
 	
+	//had to make this complicated to print nicely...
 	esttab ols ols_controls pds_lasso using Example_II_Attrition.tex, ///
 		mtitles("OLS" "OLS+Controls" "PDS-Lasso") ///
 		keep(zero_copay) ///
-		nonumbers ///
+		order(zero_copay) ///
+		noobs nonumbers ///
 		b(4) se(4) ///
 		star(* 0.10 ** 0.05 *** 0.01) ///
-		label nobaselevels ///
-		booktabs ///
-		replace 
-		
+		booktabs compress ///
+		label nobaselevels noomitted ///
+		nonotes ///
+		addnotes("Standard errors in parentheses" ///
+				 "\$^{*}p<0.10\$, \$^{**}p<0.05\$, \$^{***}p<0.01\$") ///
+		substitute("\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}" "" ///
+				   "\sym{***}" "$^{***}$" ///
+				   "\sym{**}" "$^{**}$" ///
+				   "\sym{*}" "$^{*}$") ///
+		replace
+
 //Lasso with cross-validation... there is no pds with builtin cross validation so we do it manually
 
 	//this lasso function uses the cross-validation for the tuning parameter
