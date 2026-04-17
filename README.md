@@ -1,5 +1,5 @@
 # Post-Double-Selection-Example-Code
-This repository provides example code in R and Stata for the use cases of PDS-lasso utilizing publically available datasets.
+This repository provides example code in Stata for the use cases of PDS-lasso utilizing publically available datasets.
 
 Read the powerpoint pdf for a comprehensive discussion of lasso, and post-double selection. All examples discussed in the powerpoint can be found inside this repository include datasets and documentation. Results from the examples can be found in the lecture note Appendix.
 
